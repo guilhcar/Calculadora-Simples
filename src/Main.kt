@@ -22,10 +22,16 @@ fun main() {
             "+" -> println("$n1 + $n2 = ${n1 + n2}")
             "-" -> println("$n1 - $n2 = ${n1 - n2}")
             "*" -> println("$n1 * $n2 = ${n1 * n2}")
-            "/" -> println("$n1 / $n2 = ${n1 / n2}")
-            else -> throw Exception("Operação inválida!")
+            "/" -> {
+                if (n2 == 0) {
+                    println("Erro: Divisão por zero não é permitida.")
+                } else {
+                    println("$n1 / $n2 = ${n1 / n2}")
+                }
+            }
+            else -> throw Exception("Operador INVÁLIDO!")
         }
-    } catch (_: Exception) {
-        println("Escolha uma operação válida.")
+    } catch (e: Exception) {
+        println("Erro: ${e.message}")
     }
 }
