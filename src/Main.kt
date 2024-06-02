@@ -1,10 +1,13 @@
+import kotlin.math.ln1p
+import kotlin.system.exitProcess
+
 fun main() {
 
     println("------------------------- Calculadora -------------------------")
-    print("Insira um número: ")
-    val n1 = readln().toInt()
-    print("Escolha outro número: ")
-    val n2 = readln().toInt()
+    var n1 = 1
+    var n2 = 1
+    n1 = getInput("Insira um número: ")
+    n2 = getInput("Insira outro número: ")
 
     println("""Escolha uma das seguintes operações
         |+ adição
@@ -33,5 +36,16 @@ fun main() {
         }
     } catch (e: Exception) {
         println("Erro: ${e.message}")
+    }
+
+}
+
+fun getInput(prompt: String): Int {
+    return try {
+        print(prompt)
+        readln().toInt()
+    } catch (e: Exception) {
+        println("Digite um número válido!")
+        exitProcess(0)
     }
 }
